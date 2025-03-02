@@ -17,8 +17,6 @@ export const matchQueryOptions = queryOptions({
 
     return json.data.matches;
   },
-  gcTime: 1000,
-  staleTime: 5000,
 });
 
 export const useMatches = () => {
