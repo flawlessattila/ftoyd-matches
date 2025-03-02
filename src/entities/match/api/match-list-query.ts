@@ -6,8 +6,7 @@ export const matchQueryOptions = queryOptions({
   queryKey: ["matches"],
   queryFn: async (): Promise<Match[]> => {
     const response = await customFetch(
-      `${process.env.NEXT_PUBLIC_API_ORIGIN}/fronttemp`,
-      { cache: "no-cache" }
+      `${process.env.NEXT_PUBLIC_API_ORIGIN}/fronttemp`
     );
 
     const json = await response.json();
