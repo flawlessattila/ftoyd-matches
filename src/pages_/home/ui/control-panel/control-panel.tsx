@@ -4,7 +4,7 @@ import { Alert } from "@/shared/ui/alert/alert";
 import { Button } from "@/shared/ui/button/button";
 import { RefreshIcon } from "@/shared/ui/icons/icons";
 import React from "react";
-import styled from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 const Container = styled.header`
   display: flex;
@@ -26,6 +26,29 @@ const Actions = styled.div`
   gap: 12px;
 `;
 
+const rotate = keyframes`
+  from {
+     transform: rotate(0deg);
+  }
+  50% {
+     transform: rotate(180deg);
+  }
+  to {
+     transform: rotate(360deg);
+  }
+`;
+
+const UpdateButton = styled(Button)`
+  ${(props) =>
+    props.disabled
+      ? css`
+          & .button__slot {
+            animation: ${rotate} 1s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+          }
+        `
+      : ``}
+`;
+
 const ControlPanel = () => {
   const { refetch, isFetching, isError } = useMatches();
 
@@ -39,13 +62,13 @@ const ControlPanel = () => {
             $appearWithAnimation
           />
         )}
-        <Button
+        <UpdateButton
           disabled={isFetching}
           onClick={refetch.bind(null, {})}
           endSlot={<RefreshIcon />}
         >
           Обновить
-        </Button>
+        </UpdateButton>
       </Actions>
     </Container>
   );
