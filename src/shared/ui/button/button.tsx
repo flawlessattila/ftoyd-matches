@@ -34,12 +34,15 @@ const ButtonStyled = styled.button<ButtonProps>`
     props.disabled
       ? css`
           color: #787878;
-          background-color: ${primary[700]} !important;
+          background-color: ${primary[700]};
           ${SlotStyled} {
               opacity: 0.3
           }}
         `
       : css`
+          &:hover {
+            background-color: ${primary[570]};
+          }
           &:active {
             background-color: ${primary[600]};
           }

@@ -2,6 +2,7 @@ export type ThemeColor = "success" | "primary" | "warning";
 
 export const primary = {
   500: "#EB0237",
+  570: "#ca0231",
   600: "#A01131",
   700: "#701328",
 };
